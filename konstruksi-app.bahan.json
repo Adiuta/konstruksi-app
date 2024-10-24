@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "6718cec63361690de6f71f95"
+  },
+  "bahan_id": "Batu Kali",
+  "harga_per_m3": 50000
+},
+{
+  "_id": {
+    "$oid": "6718cec63361690de6f71f96"
+  },
+  "bahan_id": "Pasir",
+  "harga_per_m3": 40000
+},
+{
+  "_id": {
+    "$oid": "6718cec63361690de6f71f97"
+  },
+  "bahan_id": "Semen",
+  "harga_per_kg": 7000
+},
+{
+  "_id": {
+    "$oid": "6718cec63361690de6f71f98"
+  },
+  "bahan_id": "Kerikil",
+  "harga_per_m3": 45000
+}]

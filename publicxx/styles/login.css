@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0e2f29;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.login-box {
+    display: flex;
+    width: 800px;
+    height: 450px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.login-left {
+    background-color: #ffffff;
+    color: #333333;
+    padding: 40px;
+    width: 50%;
+}
+
+.login-left h2 {
+    margin-bottom: 10px;
+}
+
+.login-left p {
+    margin-bottom: 20px;
+}
+
+.login-left a {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+.login-left a:hover {
+    text-decoration: underline;
+}
+
+.login-left form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-left label {
+    margin-bottom: 5px;
+    color: #333333;
+}
+
+.login-left input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-left .login-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.login-left .login-btn:hover {
+    background-color: #45a049;
+}
+
+.login-btn.google {
+    background-color: #db4437;
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.login-btn.github {
+    background-color: #333333;
+    margin-bottom: 20px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.login-btn.google:hover {
+    background-color: #c53929;
+}
+
+.login-btn.github:hover {
+    background-color: #24292e;
+}
+
+.login-right {
+    background-color: #103e36;
+    padding: 40px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.login-right h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0e2f29;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.login-box {
+    display: flex;
+    width: 800px;
+    height: 450px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.login-left {
+    background-color: #ffffff;
+    color: #333333;
+    padding: 40px;
+    width: 50%;
+}
+
+.login-left h2 {
+    margin-bottom: 10px;
+}
+
+.login-left p {
+    margin-bottom: 20px;
+}
+
+.login-left a {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+.login-left a:hover {
+    text-decoration: underline;
+}
+
+.login-left form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-left label {
+    margin-bottom: 5px;
+    color: #333333;
+}
+
+.login-left input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-left .login-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.login-left .login-btn:hover {
+    background-color: #45a049;
+}
+
+.login-btn.google {
+    background-color: #db4437;
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.login-btn.github {
+    background-color: #333333;
+    margin-bottom: 20px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.login-btn.google:hover {
+    background-color: #c53929;
+}
+
+.login-btn.github:hover {
+    background-color: #24292e;
+}
+
+.login-right {
+    background-color: #103e36;
+    padding: 40px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.login-right h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.login-right p {
+    margin-bottom: 20px;
+}
+
+.login-right a {
+    color: #4caf50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-right a:hover {
+    text-decoration: underline;
+}
+
+.login-right p {
+    margin-bottom: 20px;
+}
+
+.login-right a {
+    color: #4caf50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-right a:hover {
+    text-decoration: underline;
+}

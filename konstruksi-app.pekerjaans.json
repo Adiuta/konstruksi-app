@@ -1,0 +1,122 @@
+[{
+  "_id": "pekerjaan_1",
+  "nama_kategori": "Pekerjaan Pondasi",
+  "deskripsi": "Kategori pekerjaan pondasi untuk bangunan.",
+  "subpekerjaan": [
+    {
+      "_id": "subpekerjaan_1",
+      "nama_subpekerjaan": "Pekerjaan Batu Kosong",
+      "bahan": [
+        {
+          "bahan_id": "Batu Kali",
+          "volume": 1.2
+        },
+        {
+          "bahan_id": "Pasir",
+          "volume": 0.6
+        }
+      ],
+      "tenaga": [
+        {
+          "tenaga_id": "Pekerja",
+          "jumlah": 0.004
+        },
+        {
+          "tenaga_id": "Tukang Batu",
+          "jumlah": 0.002
+        }
+      ]
+    },
+    {
+      "_id": "subpekerjaan_2",
+      "nama_subpekerjaan": "Pondasi Batu Kali",
+      "bahan": [
+        {
+          "bahan_id": "Batu Kali",
+          "volume": 1.2
+        },
+        {
+          "bahan_id": "Pasir",
+          "volume": 0.6
+        },
+        {
+          "bahan_id": "Semen",
+          "volume": 2.5
+        }
+      ],
+      "tenaga": [
+        {
+          "tenaga_id": "Pekerja",
+          "jumlah": 0.001
+        },
+        {
+          "tenaga_id": "Tukang Batu",
+          "jumlah": 0.004
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": "pekerjaan_2",
+  "nama_kategori": "Pekerjaan Beton",
+  "deskripsi": "Kategori pekerjaan beton untuk struktur bangunan.",
+  "subpekerjaan": [
+    {
+      "_id": "subpekerjaan_3",
+      "nama_subpekerjaan": "Beton Mutu 7.4 MPa",
+      "bahan": [
+        {
+          "bahan_id": "Kerikil",
+          "volume": 1.2
+        },
+        {
+          "bahan_id": "Pasir",
+          "volume": 0.6
+        },
+        {
+          "bahan_id": "Semen",
+          "volume": 2.5
+        }
+      ],
+      "tenaga": [
+        {
+          "tenaga_id": "Pekerja",
+          "jumlah": 0.006
+        },
+        {
+          "tenaga_id": "Tukang Batu",
+          "jumlah": 0.004
+        }
+      ]
+    },
+    {
+      "_id": "subpekerjaan_4",
+      "nama_subpekerjaan": "Beton Mutu 9.2 MPa",
+      "bahan": [
+        {
+          "bahan_id": "Batu Kali",
+          "volume": 1.2
+        },
+        {
+          "bahan_id": "Pasir",
+          "volume": 0.6
+        },
+        {
+          "bahan_id": "Semen",
+          "volume": 4
+        }
+      ],
+      "tenaga": [
+        {
+          "tenaga_id": "Pekerja",
+          "jumlah": 0.006
+        },
+        {
+          "tenaga_id": "Tukang Batu",
+          "jumlah": 0.004
+        }
+      ]
+    }
+  ]
+}]

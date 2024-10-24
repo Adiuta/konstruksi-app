@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk</title>
+    <!-- <link rel="stylesheet" href="../public/styles/login.css"> -->
+</head>
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0e2f29;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.login-box {
+    display: flex;
+    width: 800px;
+    height: 450px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.login-left {
+    background-color: #ffffff;
+    color: #333333;
+    padding: 40px;
+    width: 50%;
+}
+
+.login-left h2 {
+    margin-bottom: 10px;
+}
+
+.login-left p {
+    margin-bottom: 20px;
+}
+
+.login-left a {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+.login-left a:hover {
+    text-decoration: underline;
+}
+
+.login-left form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-left label {
+    margin-bottom: 5px;
+    color: #333333;
+}
+
+.login-left input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-left .login-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.login-left .login-btn:hover {
+    background-color: #45a049;
+}
+
+.login-btn.google {
+    background-color: #db4437;
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.login-btn.github {
+    background-color: #333333;
+    margin-bottom: 20px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.login-btn.google:hover {
+    background-color: #c53929;
+}
+
+.login-btn.github:hover {
+    background-color: #24292e;
+}
+
+.login-right {
+    background-color: #103e36;
+    padding: 40px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.login-right h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0e2f29;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.login-box {
+    display: flex;
+    width: 800px;
+    height: 450px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.login-left {
+    background-color: #ffffff;
+    color: #333333;
+    padding: 40px;
+    width: 50%;
+}
+
+.login-left h2 {
+    margin-bottom: 10px;
+}
+
+.login-left p {
+    margin-bottom: 20px;
+}
+
+.login-left a {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+.login-left a:hover {
+    text-decoration: underline;
+}
+
+.login-left form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-left label {
+    margin-bottom: 5px;
+    color: #333333;
+}
+
+.login-left input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-left .login-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.login-left .login-btn:hover {
+    background-color: #45a049;
+}
+
+.login-btn.google {
+    background-color: #db4437;
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.login-btn.github {
+    background-color: #333333;
+    margin-bottom: 20px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.login-btn.google:hover {
+    background-color: #c53929;
+}
+
+.login-btn.github:hover {
+    background-color: #24292e;
+}
+
+.login-right {
+    background-color: #103e36;
+    padding: 40px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.login-right h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.login-right p {
+    margin-bottom: 20px;
+}
+
+.login-right a {
+    color: #4caf50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-right a:hover {
+    text-decoration: underline;
+}
+
+.login-right p {
+    margin-bottom: 20px;
+}
+
+.login-right a {
+    color: #4caf50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-right a:hover {
+    text-decoration: underline;
+}
+
+
+</style>
+
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-left">
+                <div class="logo">
+                    <img src="https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png" alt="MongoDB Logo" width="120">
+                    <p> </p>
+                </div>
+                <h2>Masuk dengan akun kamu!</h2>
+                <p>Tidak punya akun? <a href="/signup">Daftar Disini</a></p>
+
+                <!-- <p>Or with email and password</p> -->
+
+                <!-- Menampilkan pesan error jika ada -->
+                <% if (typeof errorMessage !== 'undefined') { %>
+                <p class="error-message"><%= errorMessage %></p>
+                <% } %>
+
+            <form action="/login" method="POST">
+                <!-- <label for="Email">Email:</label> -->
+                <input type="email" id="email" name="email" placeholder="Email*" class="input-field" required>
+                <p id="email-error" class="error-message"></p>
+
+                <!-- <label for="password">Password:</label> -->
+                <input type="password" id="password" name="password" placeholder="Kata Sandi*" class="input-field" required>
+                <p id="password-error" class="error-message"></p>
+
+                <button type="submit" class="login-btn">Masuk</button>
+            </form>
+            </div>
+            <div class="login-right">
+                <h1>Buka fitur Konstruksi app</h1>
+                <p>Untuk mengakses seluruh fitur aplikasi, silakan login terlebih dahulu menggunakan akun Anda.</p>
+                <a href="#">Learn more →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mengecek apakah user tidak ditemukan dan harus diarahkan ke halaman signup
+        <% if (typeof redirectToSignup !== 'undefined' && redirectToSignup) { %>
+            alert('ups, Sepertinya anda belum terdaftar, daftar sekarang.');
+            window.location.href = '/signup';  // Mengarahkan ke halaman signup
+        <% } %>
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+[{
+  "_id": {
+    "$oid": "6718cee33361690de6f71f9b"
+  },
+  "tenaga_id": "Pekerja",
+  "harga_per_jam": 15000
+},
+{
+  "_id": {
+    "$oid": "6718cee33361690de6f71f9c"
+  },
+  "tenaga_id": "Tukang Batu",
+  "harga_per_jam": 20000
+}]

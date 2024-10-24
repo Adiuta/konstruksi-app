@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Perhitungan</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            padding: 5px 10px;
+            margin-top: 10px;
+        }
+    </style>
+
+    <!-- Library SheetJS untuk ekspor Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <script>
+        let perhitunganSementara = [];
+
+        // Fungsi untuk memperbarui subpekerjaan berdasarkan pilihan kategori pekerjaan
+        function updateSubpekerjaan() {
+            const kategoriDropdown = document.getElementById("kategoriPekerjaan");
+            const subpekerjaanDropdown = document.getElementById("subpekerjaan");
+            const pekerjaan = <%- JSON.stringify(pekerjaan) %>; // Ambil data pekerjaan
+
+            const selectedKategori = kategoriDropdown.value;
+            const kategoriTerpilih = pekerjaan.find(item => item.nama_kategori === selectedKategori);
+
+            // Bersihkan dropdown subpekerjaan
+            subpekerjaanDropdown.innerHTML = '';
+
+            if (kategoriTerpilih) {
+                kategoriTerpilih.subpekerjaan.forEach(sub => {
+                    const option = document.createElement('option');
+                    option.value = JSON.stringify(sub);
+                    option.textContent = sub.nama_subpekerjaan;
+                    subpekerjaanDropdown.appendChild(option);
+                });
+            }
+        }
+
+        // Fungsi untuk menambah perhitungan ke dalam tabel dan menyimpannya di perhitunganSementara
+        function tambahPerhitungan() {
+            const subpekerjaanDropdown = document.getElementById("subpekerjaan");
+            const volumeInput = document.getElementById("volume").value;
+
+            if (subpekerjaanDropdown.value && volumeInput > 0) {
+                const selectedSubpekerjaan = JSON.parse(subpekerjaanDropdown.value);
+                const volume = parseFloat(volumeInput);
+
+                // Simpan hasil perhitungan
+                const perhitungan = {
+                    subpekerjaan: selectedSubpekerjaan.nama_subpekerjaan,
+                    bahan: selectedSubpekerjaan.bahan.map(bahan => ({
+                        bahan_id: bahan.bahan_id,
+                        volume: (bahan.volume * volume).toFixed(2) + " m³"
+                    })),
+                    tenaga: selectedSubpekerjaan.tenaga.map(tenaga => ({
+                        tenaga_id: tenaga.tenaga_id,
+                        jumlah: (tenaga.jumlah * volume).toFixed(4)
+                    })),
+                    volume: volume
+                };
+
+                perhitunganSementara.push(perhitungan);
+                tampilkanPerhitungan();
+            } else {
+                alert("Harap pilih subpekerjaan dan masukkan volume yang valid.");
+            }
+        }
+
+        // Fungsi untuk menampilkan hasil perhitungan di tabel
+        function tampilkanPerhitungan() {
+            const hasilTable = document.getElementById("hasilPerhitungan").getElementsByTagName("tbody")[0];
+            hasilTable.innerHTML = '';
+
+            perhitunganSementara.forEach((perhitungan, index) => {
+                const maxRows = Math.max(perhitungan.bahan.length, perhitungan.tenaga.length);
+
+                for (let i = 0; i < maxRows; i++) {
+                    const row = hasilTable.insertRow();
+                    if (i === 0) {
+                        row.insertCell(0).textContent = perhitungan.subpekerjaan;
+                    } else {
+                        row.insertCell(0).textContent = ''; // Kosongkan sel jika bukan baris pertama
+                    }
+
+                    // Isi kolom Bahan dan Volume
+                    row.insertCell(1).textContent = perhitungan.bahan[i] ? perhitungan.bahan[i].bahan_id : '';
+                    row.insertCell(2).textContent = perhitungan.bahan[i] ? perhitungan.bahan[i].volume : '';
+                    
+                    // Isi kolom Tenaga dan Jumlah
+                    row.insertCell(3).textContent = perhitungan.tenaga[i] ? perhitungan.tenaga[i].tenaga_id : ''; // Nama Tenaga
+                    row.insertCell(4).textContent = perhitungan.tenaga[i] ? perhitungan.tenaga[i].jumlah : ''; // Jumlah Tenaga
+
+                    // Tambahkan tombol hapus
+                    if (i === 0) {
+                        const deleteCell = row.insertCell(5);
+                        const deleteButton = document.createElement('button');
+                        deleteButton.textContent = 'Hapus';
+                        deleteButton.onclick = () => hapusPerhitungan(index);
+                        deleteCell.appendChild(deleteButton);
+                    } else {
+                        row.insertCell(5).textContent = ''; // Kosongkan sel untuk tombol hapus
+                    }
+                }
+            });
+        }
+
+        // Fungsi untuk menghapus perhitungan berdasarkan index
+        function hapusPerhitungan(index) {
+            perhitunganSementara.splice(index, 1);
+            tampilkanPerhitungan();
+        }
+
+        // Fungsi untuk mengekspor perhitungan ke Excel
+        function exportToExcel() {
+            // Membuat workbook baru
+            const wb = XLSX.utils.book_new();
+
+            // Menyusun data perhitungan ke dalam array
+            const data = [['Subpekerjaan', 'Bahan', 'Volume', 'Tenaga', 'Jumlah Tenaga']]; // Header
+
+            perhitunganSementara.forEach(perhitungan => {
+                const maxRows = Math.max(perhitungan.bahan.length, perhitungan.tenaga.length); // Maksimum baris antara bahan dan tenaga
+
+                for (let i = 0; i < maxRows; i++) {
+                    const bahan = perhitungan.bahan[i] ? perhitungan.bahan[i].bahan_id : ''; // Isi bahan jika ada
+                    const volume = perhitungan.bahan[i] ? perhitungan.bahan[i].volume : '';
+                    const tenaga = perhitungan.tenaga[i] ? perhitungan.tenaga[i].tenaga_id : ''; // Isi nama tenaga jika ada
+                    const jumlahTenaga = perhitungan.tenaga[i] ? perhitungan.tenaga[i].jumlah : ''; // Isi jumlah tenaga jika ada
+                    const subpekerjaan = i === 0 ? perhitungan.subpekerjaan : ''; // Subpekerjaan hanya muncul di baris pertama
+
+                    // Tambahkan data ke array
+                    data.push([subpekerjaan, bahan, volume, tenaga, jumlahTenaga]);
+                }
+            });
+
+            // Membuat worksheet dari data array
+            const ws = XLSX.utils.aoa_to_sheet(data);
+
+            // Menambahkan worksheet ke workbook
+            XLSX.utils.book_append_sheet(wb, ws, "Perhitungan Kebutuhan");
+
+            // Ekspor file Excel
+            XLSX.writeFile(wb, "perhitungan_kebutuhan.xlsx");
+        }
+    </script>
+</head>
+<body>
+    <h1>Dashboard Perhitungan</h1>
+
+    <!-- Form untuk kategori pekerjaan dan subpekerjaan -->
+    <form id="calcForm">
+        <!-- Dropdown Kategori Pekerjaan -->
+        <label for="kategoriPekerjaan">Pilih Kategori Pekerjaan:</label>
+        <select id="kategoriPekerjaan" name="kategoriPekerjaan" onchange="updateSubpekerjaan()">
+            <option value="">-- Pilih Kategori --</option>
+            <% pekerjaan.forEach(item => { %>
+                <option value="<%= item.nama_kategori %>"><%= item.nama_kategori %></option>
+            <% }) %>
+        </select>
+
+        <!-- Dropdown Subpekerjaan -->
+        <label for="subpekerjaan">Pilih Subpekerjaan:</label>
+        <select id="subpekerjaan" name="subpekerjaan">
+            <option value="">-- Pilih Subpekerjaan --</option>
+        </select>
+
+        <!-- Input Volume -->
+        <label for="volume">Masukkan Volume :</label>
+        <input type="number" id="volume" name="volume" step="0.01" min="0">
+
+        <!-- Tombol Tambah -->
+        <button type="button" onclick="tambahPerhitungan()">Tambah Perhitungan</button>
+    </form>
+
+    <!-- Tabel hasil perhitungan -->
+    <h2>Hasil Perhitungan:</h2>
+    <table id="hasilPerhitungan">
+        <thead>
+            <tr>
+                <th>Subpekerjaan</th>
+                <th>Bahan</th>
+                <th>Volume</th>
+                <th>Tenaga</th>
+                <th>Jumlah Tenaga</th>
+                <th>Opsi</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <!-- Tombol untuk export ke Excel -->
+    <button type="button" onclick="exportToExcel()">Export ke Excel</button>
+
+</body>
+</html>

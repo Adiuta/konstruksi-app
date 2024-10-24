@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #0e3035;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: white;
+    }
+
+    .signup-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .signup-box {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 40px;
+        width: 400px;
+        text-align: center;
+        color: #0e3035;
+    }
+
+    .title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        margin-bottom: 20px;
+    }
+
+    .google-signup-btn {
+        background-color: white;
+        color: #333;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .signup-form .input-field {
+        width: calc(50% - 10px);
+        padding: 10px;
+        margin-bottom: 15px;
+        margin-right: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .signup-form .input-field:last-child {
+        margin-right: 0;
+    }
+
+    .signup-form .input-field[type="email"], 
+    .signup-form .input-field[type="password"], 
+    .signup-form .input-field[type="text"] {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .terms {
+        text-align: left;
+        font-size: 12px;
+        margin: 20px 0;
+    }
+
+    .terms a {
+        color: #0e3035;
+    }
+
+    .submit-btn {
+        background-color: #14c989;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .submit-btn .submit-btn :hover {
+        background-color: #45a049;
+
+    }    
+
+    .signin-link {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    .signin-link a {
+        color: #14c989;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+</style>
+
+<body>
+    <div class="signup-container">
+        <div class="signup-box">
+            <h2 class="title">Daftar</h2>
+            <p>Jelajahi apa yang bisa dilakukan Konstruksi app secara gratis</p>
+            <!-- <button class="google-signup-btn">Daftar dengan Google</button> -->
+            
+            <form action="#" class="signup-form" id="signupForm">
+                <div class="name-fields">
+                <input type="text" id="firstname" placeholder="Nama Depan*" class="input-field" required>
+                <input type="text" id="lastname" placeholder="Nama Belakang*" class="input-field" required>
+                </div>
+                <input type="email" id="email" placeholder="Email*" class="input-field" required>
+                <p id="email-error" class="error-message"></p>
+
+                <input type="password" id="password" placeholder="Kata Sandi*" class="input-field" required>
+                <p id="password-error" class="error-message"></p>
+                
+                <div class="terms">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">Saya setuju dengan <a href="#">Syarat Layanan</a> dan <a href="#">Kebijakan Privasi</a>.</label>
+                </div>
+                
+                <button type="submit" class="submit-btn">Buat Akun Atlas</button>
+            </form>
+
+            <p class="signin-link">Sudah punya akun? <a href="./login">Masuk</a></p>
+        </div>
+    </div>
+
+    <!-- JavaScript untuk Validasi -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById("signupForm");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // Mencegah pengiriman form
+
+            const password = document.getElementById("password").value;
+            const email = document.getElementById("email").value;
+            const passwordError = document.getElementById("password-error");
+            const emailError = document.getElementById("email-error");
+
+            let valid = true;
+
+            // Pola sederhana yang tidak diperbolehkan
+            const simplePatterns = /^(?:12345678|abcdefg|password|qwerty|000000|111111)$/i;
+
+            // Reset pesan kesalahan
+            passwordError.textContent = "";
+            emailError.textContent = "";
+
+            // Validasi Kata Sandi
+            if (password.length < 6) {
+                passwordError.textContent = "Kata sandi harus minimal 6 karakter.";
+                valid = false;
+            } else if (simplePatterns.test(password)) {
+                passwordError.textContent = "Kata sandi terdiri dari huruf dan angka'.";
+                valid = false;
+            }
+
+            // Simulasi Validasi Email Sudah Terdaftar
+            const existingEmails = ['test@example.com', 'user@domain.com']; // Daftar email contoh
+            if (existingEmails.includes(email)) {
+                emailError.textContent = "Email sudah digunakan. Silakan gunakan email lain.";
+                valid = false;
+            }
+
+            // Jika validasi berhasil, submit form
+            if (valid) {
+                alert("Pendaftaran berhasil, silahkan login ke akun anda !");
+                window.location.href = "/login"; // Redirect ke halaman login
+                // alert("Formulir berhasil dikirim!");
+                // form.submit(); // Hapus ini jika menggunakan AJAX untuk mengirim form manual
+            }
+        });
+    });
+    </script>
+
+</body>
+
+</html>
